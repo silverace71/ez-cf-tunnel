@@ -10,5 +10,5 @@ sudo chmod +x cf-setup.sh
 ```
 then
 ```
-./cd-setup.sh
+./cf-setup.sh
 ```
