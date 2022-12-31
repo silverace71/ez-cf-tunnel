@@ -24,4 +24,10 @@ url: $indeed://$url/
 tunnel: $tunnelid
 credentials-file: $(sudo find / -type d -iname ".cloudflared" 2>/dev/null)/$tunnelid.json
 EOF
-    echo "done!"
+## tunnel routeing
+    echo "what subdomain do you want to give your tunnel?"
+    read subdomain
+    cloudflared tunnel route dns $tunnelid $subdomain
+## running tunnel
+    cloudflared tunnel --config $(sudo find / -type d -iname ".cloudflared" 2>/dev/null)/$tname.yaml run
+    echo "Tunnel is active and running!"
