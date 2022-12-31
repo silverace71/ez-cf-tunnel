@@ -29,7 +29,7 @@ EOF
     read subdomain
     cloudflared tunnel route dns $tunnelid $subdomain
 ## running tunnel and cleanup
-    cloudflared tunnel --config $(sudo find / -type d -iname ".cloudflared" 2>/dev/null)/$tname.yaml run
+    nohup cloudflared tunnel --config $(sudo find / -type d -iname ".cloudflared" 2>/dev/null)/$tname.yaml run &
     wget https://raw.githubusercontent.com/silverace71/ez-cf-tunnel/main/cf-deb-amd64-end.sh
     sudo chmod +x cf-deb-amd64-end.sh
     echo "tunnel is up and running! use ./cd-deb-amd64-end.sh to create more tunnels on this system. (NOTE: if you want to make more tunnels on a diffrent machine run the original script)"
