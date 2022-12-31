@@ -19,9 +19,9 @@
     echo "are you using http or https?"
     read indeed
 ## config file
-cat "$tname"_config.yaml
-url: "$indeed"://"$url"
-tunnel: "$tunnelid"
-credentials-file: "$(sudo find / -type d -iname ".cloudflared" 2>/dev/null)"/"tunnelid".json
+cat << EOF >> $tname.yaml
+url: $indeed://$url/
+tunnel: $tunnelid
+credentials-file: $(sudo find / -type d -iname ".cloudflared" 2>/dev/null)/$tunnelid.json
 EOF
     echo "done!"
